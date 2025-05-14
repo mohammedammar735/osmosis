@@ -72,7 +72,7 @@ def index():
                 msg = session.get(f"https://api.mail.tm/messages/{msg_id}", headers=headers).json()
                 body = msg["html"][0] if msg["html"] else msg["text"]
                 import re
-                match = re.search(r'https://www.osmosis.org/email-confirmation[^"']+', body)
+                match = re.search(r"https://www\.osmosis\.org/email-confirmation[^\"']+", body)
                 if match:
                     activation_link = match.group(0)
                     session.get(activation_link)
